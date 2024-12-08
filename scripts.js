@@ -40,4 +40,15 @@ form.onsubmit = (event) => {
     category_name: category.options[category.selectedIndex].text,
     created_at: new Date(),
   };
+
+  // Chama a função que irá adicionar o item na lista
+  expenseAdd(newExpense);
 };
+
+function expenseAdd(newExpense) {
+  try {
+  } catch (error) {
+    alert("Não foi possível atualizar a lista de despesas!");
+    console.log(error);
+  }
+}
