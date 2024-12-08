@@ -103,6 +103,7 @@ function expenseAdd(newExpense) {
   }
 }
 
+// Atualiza os totais
 function updateTotais(newExpense) {
   try {
     // Recupera todos os intens (li) da lista (ul)
@@ -112,6 +113,14 @@ function updateTotais(newExpense) {
     expensesQuantity.textContent = `${items.length} ${
       items.length > 1 ? "despesas" : "despesa"
     }`;
+
+    // Variável para incremental o total
+    let total = 0;
+
+    for (let item = 0; item < items.length; item++) {
+      // const element = items[item];
+      
+    }
   } catch (error) {
     console.log(error);
     alert("Não foi possível atualizar os totais!");
