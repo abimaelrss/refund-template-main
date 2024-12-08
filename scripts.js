@@ -41,6 +41,7 @@ form.onsubmit = (event) => {
     expense: expense.value,
     category_id: category.value,
     category_name: category.options[category.selectedIndex].text,
+    amount: amount.value,
     created_at: new Date(),
   };
 
@@ -72,10 +73,23 @@ function expenseAdd(newExpense) {
     expenseCategory.textContent = newExpense.category_name;
 
     // Adiciona nome e categoria na div das informções da despesa
-    expenseInfo.append(expenseName, expenseCategory)
+    expenseInfo.append(expenseName, expenseCategory);
+
+    // Cria o valor da despesa
+    const expenseAmount = document.createElement("span");
+    expenseAmount.classList.add("expense-amount");
+    expenseAmount.innerHTML = `<small>R$</small>${newExpense.amount
+      .toUpperCase()
+      .replace("R$", "")}`;
+
+    // Cria o ícone de remover
+    const removeIcon = document.createElement("img");
+    removeIcon.classList.add("remove-icon")
+    removeIcon.setAttribute("src", "img/remove.svg");
+    removeIcon.setAttribute("alt", "remover");
 
     // Adiciona as informações no item
-    expenseItem.append(expenseIcon, expenseInfo);
+    expenseItem.append(expenseIcon, expenseInfo, expenseAmount, removeIcon);
 
     // Adiciona o item na lista
     expenseList.append(expenseItem);
